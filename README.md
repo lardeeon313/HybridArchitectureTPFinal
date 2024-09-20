@@ -5,11 +5,11 @@ Repositorio base para la creación de una API Rest con arquitectura hibrida DDD 
 
 # Como hacer uso de el
 
-Se debe clonar el repositorio en un directorio local de su preferencia, mediante el Git bash ejecutando el comando: Git clone [https://github.com/FedeJG82/ESCMB.HybridDDDArchitecture.git](https://github.com/FedeJG82/HybridArchitecture.NET.git), tambien puede descargarlo como archivo comprimido .Zip o abrirlo desde GitHub Desktop.
+Se debe clonar el repositorio en un directorio local de su preferencia, mediante el Git bash ejecutando el comando: Git clone [https://github.com/FedeJG82/HybridArchitecture.NET.git](https://github.com/FedeJG82/HybridArchitecture.NET.git), tambien puede descargarlo como archivo comprimido .Zip o abrirlo desde GitHub Desktop.
 
 Crear un repositorio vacio en GitHub con su cuenta, y clonarlo de la misma forma que en el paso anterior.
 
-Copiar el contenido del repositorio [https://github.com/FedeJG82/ESCMB.HybridDDDArchitecture.git](https://github.com/FedeJG82/HybridArchitecture.NET.git) dentro del suyo y guardar los cambios.
+Copiar el contenido del repositorio [https://github.com/FedeJG82/HybridArchitecture.NET.git](https://github.com/FedeJG82/HybridArchitecture.NET.git) dentro del suyo y guardar los cambios.
 
 Ahora esta en condiciones de empezar el desarrollo en su repositorio.
 
