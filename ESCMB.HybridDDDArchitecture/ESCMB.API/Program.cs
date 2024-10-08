@@ -9,7 +9,12 @@ namespace ESCMB.API
         {
             CreateHostBuilder(args).Build().Run();
         }
-        public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(config => { config.UseStartup<Startup>(); });
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+     Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+            webBuilder.UseKestrel(); // Asegura que uses Kestrel y no otro servidor web.
+        });
     }
 }
