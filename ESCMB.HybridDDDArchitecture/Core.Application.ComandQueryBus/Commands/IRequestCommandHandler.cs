@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Core.Application
+namespace Core.Application.ComandQueryBus.Commands
 {
     public interface IRequestCommandHandler<in TRequest> : IRequestHandler<TRequest>
         where TRequest : IRequest

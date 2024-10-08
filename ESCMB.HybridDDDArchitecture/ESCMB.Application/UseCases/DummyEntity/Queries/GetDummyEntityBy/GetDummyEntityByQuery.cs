@@ -1,4 +1,5 @@
 ﻿using Core.Application;
+using Core.Application.ComandQueryBus.Queries;
 using ESCMB.Application.DataTransferObjects;
 using System.ComponentModel.DataAnnotations;
 

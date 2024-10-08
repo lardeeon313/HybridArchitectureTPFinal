@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Core.Application
+namespace Core.Application.ComandQueryBus.Queries
 {
     public interface IRequestQueryHandler<in TRequest> : IRequestHandler<TRequest>
         where TRequest : IRequest
@@ -10,6 +10,5 @@ namespace Core.Application
     public interface IRequestQueryHandler<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
-
     }
 }

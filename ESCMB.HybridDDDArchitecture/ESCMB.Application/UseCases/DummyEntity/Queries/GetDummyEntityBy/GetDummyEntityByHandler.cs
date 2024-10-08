@@ -1,4 +1,5 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Queries;
+using Core.Application.Mapping;
 using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.Exceptions;
 using ESCMB.Application.Repositories.Sql;

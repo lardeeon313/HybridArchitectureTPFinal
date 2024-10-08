@@ -1,4 +1,6 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Buses;
+using Core.Application.ComandQueryBus.Commands;
+using Core.Application.Mapping;
 using ESCMB.Application.DomainEvents;
 using ESCMB.Application.Exceptions;
 using ESCMB.Application.Repositories.Sql;

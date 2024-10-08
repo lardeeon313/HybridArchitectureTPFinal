@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Notifications;
 
 namespace ESCMB.Application.DomainEvents
 {

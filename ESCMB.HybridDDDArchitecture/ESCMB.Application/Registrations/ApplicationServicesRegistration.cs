@@ -1,5 +1,6 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Buses;
 using ESCMB.Application.ApplicationServices;
+using ESCMB.Application.ApplicationServices.Customer;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -24,6 +25,7 @@ namespace ESCMB.Application.Registrations
             services.AddScoped<ICommandQueryBus, MediatrCommandQueryBus>();
 
             /* Application Services */
+            services.AddScoped<ICustomerApplicationService, CustomerApplicationService>();
             services.AddScoped<IDummyEntityApplicationService, DummyEntityApplicationService>();
 
             return services;

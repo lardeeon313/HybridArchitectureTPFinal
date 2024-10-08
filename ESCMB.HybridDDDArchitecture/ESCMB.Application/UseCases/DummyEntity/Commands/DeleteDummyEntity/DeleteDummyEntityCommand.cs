@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Commands;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 

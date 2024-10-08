@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Core.Application
+namespace Core.Application.ComandQueryBus.Notifications
 {
     public interface IRequestNotification : INotification
     {

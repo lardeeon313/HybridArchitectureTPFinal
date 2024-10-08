@@ -1,4 +1,4 @@
-﻿namespace Core.Application
+﻿namespace Core.Application.ComandQueryBus.Notifications
 {
     public class DomainEvent : IRequestNotification
     {

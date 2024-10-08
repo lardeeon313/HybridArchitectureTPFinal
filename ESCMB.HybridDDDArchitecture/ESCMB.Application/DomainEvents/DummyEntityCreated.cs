@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Notifications;
 using static ESCMB.Domain.Enums;
 
 namespace ESCMB.Application.DomainEvents

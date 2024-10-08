@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Commands;
 using System.ComponentModel.DataAnnotations;
 using static ESCMB.Domain.Enums;
 

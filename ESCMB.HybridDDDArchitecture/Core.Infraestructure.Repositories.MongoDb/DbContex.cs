@@ -1,4 +1,9 @@
 ﻿using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Core.Infraestructure.Repositories.MongoDb
 {
@@ -11,8 +16,8 @@ namespace Core.Infraestructure.Repositories.MongoDb
         protected DbContext(string connectionString)
         {
 
-            MongoUrl url = new MongoUrl(connectionString ?? throw new ArgumentNullException(nameof(connectionString)));
-            MongoClient client = new MongoClient(url);
+            MongoUrl url = new(connectionString ?? throw new ArgumentNullException(nameof(connectionString)));
+            MongoClient client = new(url);
             Database = client.GetDatabase(url.DatabaseName);
         }
     }

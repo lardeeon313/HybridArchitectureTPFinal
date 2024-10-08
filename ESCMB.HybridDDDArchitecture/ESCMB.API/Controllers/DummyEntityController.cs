@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Buses;
 using ESCMB.Application.UseCases.DummyEntity.Commands.CreateDummyEntity;
 using ESCMB.Application.UseCases.DummyEntity.Commands.DeleteDummyEntity;
 using ESCMB.Application.UseCases.DummyEntity.Commands.UpdateDummyEntity;

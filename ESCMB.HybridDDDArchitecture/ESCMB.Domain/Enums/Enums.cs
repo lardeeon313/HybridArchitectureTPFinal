@@ -15,5 +15,12 @@
             value2,
             value3,
         }
+
+        public enum CustomerStatus
+        {
+            PendingConfirmation,
+            Confirmed,
+            Active,
+        }
     }
 }

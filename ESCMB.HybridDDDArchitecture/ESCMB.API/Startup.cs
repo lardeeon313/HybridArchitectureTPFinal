@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core.Application;
+using Core.Application.Mapping;
 using ESCMB.API.Filters;
 using ESCMB.Application.Registrations;
 using ESCMB.Infraestructure.Registrations;

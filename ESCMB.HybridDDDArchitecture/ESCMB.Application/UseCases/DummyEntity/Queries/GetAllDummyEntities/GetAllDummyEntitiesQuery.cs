@@ -1,4 +1,4 @@
-﻿using Core.Application;
+﻿using Core.Application.ComandQueryBus.Queries;
 using ESCMB.Application.DataTransferObjects;
 
 namespace ESCMB.Application.UseCases.DummyEntity.Queries.GetAllDummyEntities

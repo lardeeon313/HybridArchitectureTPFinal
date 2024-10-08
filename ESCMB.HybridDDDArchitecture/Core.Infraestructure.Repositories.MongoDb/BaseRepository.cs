@@ -39,13 +39,13 @@ namespace Core.Infraestructure.Repositories.MongoDb
 
         public IList<TEntity> FindAll()
         {
-            FilterDefinition<TEntity> filter = new BsonDocumentFilterDefinition<TEntity>(new BsonDocument());
+            FilterDefinition<TEntity> filter = new BsonDocumentFilterDefinition<TEntity>([]);
             return Collection.Find(filter).ToList();
         }
 
         public Task<List<TEntity>> FindAllAsync()
         {
-            FilterDefinition<TEntity> filter = new BsonDocumentFilterDefinition<TEntity>(new BsonDocument());
+            FilterDefinition<TEntity> filter = new BsonDocumentFilterDefinition<TEntity>([]);
             return Collection.Find(filter).ToListAsync();
         }
 

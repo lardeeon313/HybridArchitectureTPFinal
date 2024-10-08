@@ -1,19 +1,11 @@
-﻿namespace Core.Application
+﻿namespace Core.Application.ComandQueryBus.Queries
 {
-    public class QueryResult<TEntity>
+    public class QueryResult<TEntity>(IEnumerable<TEntity> items, long count, uint pageSize, uint pageIndex)
         where TEntity : class
     {
-        public long Count { get; private set; }
-        public IEnumerable<TEntity> Items { get; private set; }
-        public uint PageIndex { get; private set; }
-        public uint PageSize { get; private set; }
-
-        public QueryResult(IEnumerable<TEntity> items, long count, uint pageSize, uint pageIndex)
-        {
-            Items = items;
-            Count = count;
-            PageIndex = pageIndex;
-            PageSize = pageSize;
-        }
+        public long Count { get; private set; } = count;
+        public IEnumerable<TEntity> Items { get; private set; } = items;
+        public uint PageIndex { get; private set; } = pageIndex;
+        public uint PageSize { get; private set; } = pageSize;
     }
 }

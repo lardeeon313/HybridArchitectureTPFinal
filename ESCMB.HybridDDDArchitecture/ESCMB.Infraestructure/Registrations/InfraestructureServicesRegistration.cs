@@ -36,6 +36,7 @@ namespace ESCMB.Infraestructure.Registrations
             //context.Database.Migrate();
 
             /* Sql Repositories */
+            services.AddTransient<Application.Repositories.Sql.ICustomerRepository, Repositories.Sql.CustomerRepository>();
             services.AddTransient<Application.Repositories.Sql.IDummyEntityRepository, Repositories.Sql.DummyEntityRepository>();
 
             return services;

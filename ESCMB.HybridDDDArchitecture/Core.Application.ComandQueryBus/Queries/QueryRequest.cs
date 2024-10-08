@@ -1,4 +1,4 @@
-﻿namespace Core.Application
+﻿namespace Core.Application.ComandQueryBus.Queries
 {
     public class QueryRequest<TResponse> : IRequestQuery<TResponse>
         where TResponse : class

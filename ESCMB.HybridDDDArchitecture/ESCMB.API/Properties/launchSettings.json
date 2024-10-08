@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ESCMB.API": {
+    "ESCMB.HybridDDDArchitecture": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -8,7 +8,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7204;http://localhost:5204"
+      "applicationUrl": "https://localhost:3306;"
     },
     "IIS Express": {
       "commandName": "IISExpress",
