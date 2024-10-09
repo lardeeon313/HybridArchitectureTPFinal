@@ -5,6 +5,7 @@ using ESCMB.Application.UseCases.Customer.Commands.UpdateCustomer;
 using ESCMB.Application.UseCases.Customer.Queries.GetAllCustomer;
 using ESCMB.Application.UseCases.Customer.Queries.GetCustomerBy;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson.IO;
 
 namespace ESCMB.API.Controllers
 {
@@ -30,14 +31,30 @@ namespace ESCMB.API.Controllers
             return Ok(entity);
         }
 
-        [HttpPost("api/v1/[Controller]")]
-        public async Task<IActionResult> Create(CreateCustomerCommand command)
+        [HttpPost("api/v1/create")]
+        public async Task<IActionResult> Create( CreateCustomerCommand command)
         {
-            if (command is null) return BadRequest();
+            try
+            {
+                if (command == null)
+                {
+                    return BadRequest("Command no puede ser null");
+                }
+                Console.WriteLine("por pasar" );
+                Console.WriteLine($" command: {command.CuilCuit} fisrt name {command.FirstName}");
+                var id = await _commandQueryBus.Send(command);
+                Console.WriteLine("paso");
+                return Created($"api/[Controller]/{id}", new { Id = id });
 
-            var id = await _commandQueryBus.Send(command);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+                // Opcionalmente, puedes registrar la excepción completa
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                return BadRequest();
 
-            return Created($"api/[Controller]/{id}", new { Id = id });
+            }
         }
 
         [HttpPut("api/v1/[Controller]")]

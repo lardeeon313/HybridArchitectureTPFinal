@@ -28,7 +28,7 @@ namespace ESCMB.Infraestructure.Registrations
         {
             services.AddDbContext<Repositories.Sql.StoreDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
+                options.UseMySQL(configuration.GetConnectionString("SqlConnection"));
             }, ServiceLifetime.Scoped);
 
             //Habilitar para trabajar con Migrations

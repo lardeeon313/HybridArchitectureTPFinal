@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Core.Infraestructure.Repositories.MongoDb\Core.Infraestructure.Repositories.MongoDb.csproj" />
     <ProjectReference Include="..\Core.Infraestructure.Repositories.Sql\Core.Infraestructure.Repositories.Sql.csproj" />
     <ProjectReference Include="..\ESCMB.Application\ESCMB.Application.csproj" />
@@ -20,6 +17,10 @@
     <Folder Include="Adapters\" />
     <Folder Include="Constants\" />
     <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.5" />
   </ItemGroup>
 
 </Project>

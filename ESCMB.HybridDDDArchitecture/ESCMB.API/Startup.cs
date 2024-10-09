@@ -15,9 +15,14 @@ namespace ESCMB.API
             Configuration = configuration;
         }
 
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            });
             services.AddEndpointsApiExplorer();
             services.AddApplicationServices();
             services.AddInfraestructureServices(Configuration);

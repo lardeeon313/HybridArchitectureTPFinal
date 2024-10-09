@@ -23,22 +23,41 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
         private readonly ICustomerApplicationService _customerApplicationService = customerApplicationService ?? throw new ArgumentNullException(nameof(customerApplicationService));
         public async Task<string> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
+            Console.WriteLine("Creating customer entity...");
+            Console.WriteLine("CUIT request" + request.CuilCuit);
             Domain.Entities.Customer entity = new(request.CuilCuit, request.DocumentNumber, request.Email, request.FirstName, request.LastName);
 
-            if (!entity.IsValid()) throw new InvalidEntityDataException(entity.GetErrors());
+            if (!entity.IsValid())
+            {
+                Console.WriteLine("Customer entity is not valid");
+                throw new InvalidEntityDataException(entity.GetErrors());
+            }
 
-            if (_customerApplicationService.CustomerExist(entity.Id)) throw new EntityDoesExistException();
+            Console.WriteLine("Checking if customer exists...");
+            if (_customerApplicationService.CustomerExist(entity.Id))
+            {
+                Console.WriteLine("Customer already exists");
+                throw new EntityDoesExistException();
+            }
 
             try
             {
+                Console.WriteLine("Adding customer to repository...");
+                Console.WriteLine("CUIT"+entity.CuilCuit);
                 string createdId = await _context.AddOneAsync(entity);
+                Console.WriteLine($"Customer created with ID: {createdId}");
 
-                await _domainBus.Publish(entity.To<CustomerCreated>(), cancellationToken);
+                Console.WriteLine("Publishing CustomerCreated event...");
+                CustomerCreated customerCreated = new CustomerCreated(entity.CuilCuit,entity.DocumentNumber,
+                    entity.Email,entity.FirstName,entity.LastName);
+                await _domainBus.Publish(customerCreated, cancellationToken);
+                Console.WriteLine("Event published.");
 
                 return createdId;
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error during customer creation: {ex.Message}, InnerException: {ex.InnerException?.Message}");
                 throw new BussinessException(Constants.PROCESS_EXECUTION_EXCEPTION, ex.InnerException);
             }
         }

@@ -13,12 +13,12 @@ namespace ESCMB.Domain.Validators
     {
         public CustomerValidator()
         {
-            RuleFor(x => x.Email).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
-            RuleFor(x => x.DocumentNumber).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
-            RuleFor(x => x.CuilCuit).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
-            RuleFor(x => x.FirstName).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
-            RuleFor(x => x.LastName).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
-            RuleFor(x => x.Status).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+           // RuleFor(x => x.Email).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+           // RuleFor(x => x.DocumentNumber).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+            //RuleFor(x => x.CuilCuit).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+            //RuleFor(x => x.FirstName).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+            //RuleFor(x => x.LastName).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
+            //RuleFor(x => x.Status).NotNull().NotEmpty().WithMessage(Constants.NOTNULL_OR_EMPTY);
         }
     }
 }

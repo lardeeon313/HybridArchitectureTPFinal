@@ -20,6 +20,14 @@ namespace ESCMB.Application.DomainEvents.Customer
         public string FirstName { get; private set; }
         [Required]
         public string LastName { get; private set; }
-        
+
+        public CustomerCreated(string cuilCuit, string documentNumber, string email, string firstName, string lastName)
+        {
+            CuilCuit = cuilCuit;
+            DocumentNumber = documentNumber;
+            Email = email;
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

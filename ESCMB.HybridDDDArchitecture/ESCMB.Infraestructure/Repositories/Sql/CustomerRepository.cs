@@ -14,14 +14,15 @@ namespace ESCMB.Infraestructure.Repositories.Sql
     internal sealed class CustomerRepository(StoreDbContext context) : BaseRepository<Customer>(context), ICustomerRepository
     {
 
-        public Task<string> AddOneAsync(Customer entity)
+        public string AddOneAsync(Customer entity)
         {
-            throw new NotImplementedException();
+            context.Customer.Add(entity);
+            return entity.Id.ToString();
         }
 
         public Customer FindOne(params object[] keyValues)
         {
-            throw new NotImplementedException();
+            return context.Customer.Find(keyValues);
         }
 
         public ValueTask<Customer> FindOneAsync(params object[] keyValues)
