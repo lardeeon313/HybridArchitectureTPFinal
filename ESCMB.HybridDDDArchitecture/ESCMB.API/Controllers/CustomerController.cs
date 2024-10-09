@@ -32,7 +32,7 @@ namespace ESCMB.API.Controllers
         }
 
         [HttpPost("api/v1/create")]
-        public async Task<IActionResult> Create( CreateCustomerCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateCustomerCommand command)
         {
             try
             {
