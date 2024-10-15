@@ -14,17 +14,17 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
 
         [Required]
         public string CuilCuit { get; set; }
-        //[Required]
+        [Required]
         public string DocumentNumber { get; set; }
-        //[Required]
+        [Required]
         public string Email { get; set; }
-        //[Required]
+        [Required]
         public bool EmailConfirmed { get;  set; }
-        //[Required]
+        [Required]
         public string FirstName { get;  set; }
-        //[Required]
+        [Required]
         public string LastName { get;  set; }
-        //[Required]
+        [Required]
         public CustomerStatus Status { get;  set; }
 
         public CreateCustomerCommand()

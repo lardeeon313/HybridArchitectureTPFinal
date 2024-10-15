@@ -25,6 +25,17 @@ namespace ESCMB.Infraestructure.Repositories.Sql
             return context.Customer.Find(keyValues);
         }
 
+        public Customer FindById(string id)
+        {
+            var customer = context.Customer.Find(id);
+            if (customer == null)
+            {
+                // Manejo del caso cuando no se encuentra el cliente
+                throw new KeyNotFoundException($"Customer with ID {id} was not found.");
+            }
+            return customer;
+        }
+
         public ValueTask<Customer> FindOneAsync(params object[] keyValues)
         {
             throw new NotImplementedException();

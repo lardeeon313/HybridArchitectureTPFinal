@@ -22,11 +22,15 @@ namespace ESCMB.API.Controllers
         }
 
         [HttpGet("api/v1/[Controller]/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
-            if (id <= 0) return BadRequest();
+            if (string.IsNullOrEmpty(id))
+                return BadRequest("Invalid ID.");
 
             var entity = await _commandQueryBus.Send(new GetCustomerByQuery { Id = id });
+
+            if (entity == null)
+                return NotFound($"Customer with ID {id} not found.");
 
             return Ok(entity);
         }
@@ -40,10 +44,8 @@ namespace ESCMB.API.Controllers
                 {
                     return BadRequest("Command no puede ser null");
                 }
-                Console.WriteLine("por pasar" );
                 Console.WriteLine($" command: {command.CuilCuit} fisrt name {command.FirstName}");
                 var id = await _commandQueryBus.Send(command);
-                Console.WriteLine("paso");
                 return Created($"api/[Controller]/{id}", new { Id = id });
 
             }

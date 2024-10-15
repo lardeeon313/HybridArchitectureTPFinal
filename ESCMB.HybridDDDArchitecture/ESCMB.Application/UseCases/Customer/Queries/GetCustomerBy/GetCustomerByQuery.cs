@@ -12,7 +12,7 @@ namespace ESCMB.Application.UseCases.Customer.Queries.GetCustomerBy
     public class GetCustomerByQuery : IRequest<CustomerDto>
     {
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public GetCustomerByQuery()
         {
