@@ -26,7 +26,7 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
             Console.WriteLine("Creating customer entity...");
             Console.WriteLine("CUIT request" + request.CuilCuit);
             Domain.Entities.Customer entity = new(request.CuilCuit, request.DocumentNumber, request.Email, request.FirstName, request.LastName);
-
+            
             if (!entity.IsValid())
             {
                 Console.WriteLine("Customer entity is not valid");

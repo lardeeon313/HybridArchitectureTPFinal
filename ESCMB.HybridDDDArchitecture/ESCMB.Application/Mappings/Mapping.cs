@@ -12,7 +12,7 @@ namespace ESCMB.Application.Mappings
     {
         public Mapping()
         {
-            CreateMap<DummyEntity, DummyEntityCreated>().ReverseMap();
+            CreateMap<Customer, CustomerDto>().ReverseMap();
             CreateMap<DummyEntity, DummyEntityUpdated>().ReverseMap();
             CreateMap<DummyEntity, DummyEntityDto>().ReverseMap();
         }

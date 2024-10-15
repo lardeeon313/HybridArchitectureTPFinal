@@ -13,18 +13,18 @@ namespace ESCMB.Domain.Entities
     public class Customer : DomainEntity<Customer, CustomerValidator>
     {
         [Key]
-        public string Id { get; private set; }
+        public string Id { get;  set; }
         [MaxLength(11)]
-        public string CuilCuit { get; private set; }
+        public string CuilCuit { get;  set; }
         [MaxLength(8)]
-        public string DocumentNumber { get; private set; }
-        public string Email { get; private set; }
-        public bool EmailConfirmed { get; private set; }
+        public string DocumentNumber { get;  set; }
+        public string Email { get;  set; }
+        public bool EmailConfirmed { get;  set; }
         [MaxLength(100)]
-        public string FirstName { get; private set; }
+        public string FirstName { get;  set; }
         [MaxLength(100)]
-        public string LastName { get; private set; }
-        public CustomerStatus Status { get; private set; }
+        public string LastName { get;  set; }
+        public CustomerStatus Status { get;  set; }
 
         public Customer()
         {

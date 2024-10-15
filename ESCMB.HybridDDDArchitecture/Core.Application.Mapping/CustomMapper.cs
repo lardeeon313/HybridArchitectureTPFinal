@@ -20,6 +20,7 @@ namespace Core.Application.Mapping
             return mapper.Map<T>(input);
         }
 
+    
         public static IEnumerable<T> To<T>(this IEnumerable<IValidate> input)
         {
             IMapper mapper = Instance;

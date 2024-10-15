@@ -13,10 +13,17 @@ namespace ESCMB.Application.UseCases.Customer.Commands.UpdateCustomer
     public class UpdateCustomerCommand : IRequestCommand<Unit>
     {
         [Required]
-        public int Id { get; set; }
-        [Required]
-        public string DummyPropertyTwo { get; set; }
-        public DummyValues DummyPropertyThree { get; set; }
+        public string Id { get; set; }
+      
+        public string CuilCuit { get; set; }
+        [MaxLength(8)]
+        public string DocumentNumber { get; set; }
+        public string Email { get; set; }
+        public bool EmailConfirmed { get; set; }
+        [MaxLength(100)]
+        public string FirstName { get; set; }
+        [MaxLength(100)]
+        public string LastName { get; set; }
 
         public UpdateCustomerCommand()
         {

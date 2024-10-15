@@ -38,7 +38,8 @@ namespace ESCMB.Infraestructure.Repositories.Sql
 
         public ValueTask<Customer> FindOneAsync(params object[] keyValues)
         {
-            throw new NotImplementedException();
+
+            return context.Customer.FindAsync(keyValues);
         }
 
         public void Remove(Customer entity)

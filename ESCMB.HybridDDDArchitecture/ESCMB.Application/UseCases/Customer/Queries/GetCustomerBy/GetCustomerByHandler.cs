@@ -18,8 +18,18 @@ namespace ESCMB.Application.UseCases.Customer.Queries.GetCustomerBy
 
         public async Task<CustomerDto> Handle(GetCustomerByQuery request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Customer entity = await _context.FindOneAsync(request.Id) ?? throw new EntityDoesNotExistException();
-            return entity.To<CustomerDto>();
+            try
+            {
+                Console.WriteLine(request.Id);
+                Domain.Entities.Customer entity = await _context.FindOneAsync(request.Id) ?? throw new EntityDoesNotExistException();
+                Console.WriteLine("llego");
+                return entity.To<CustomerDto>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }
