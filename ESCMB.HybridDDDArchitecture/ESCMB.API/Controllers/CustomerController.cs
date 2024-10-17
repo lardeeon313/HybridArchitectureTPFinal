@@ -60,7 +60,7 @@ namespace ESCMB.API.Controllers
         }
 
         [HttpPut("api/v1/[Controller]")]
-        public async Task<IActionResult> Update(UpdateCustomerCommand command)
+        public async Task<IActionResult> Update([FromBody] UpdateCustomerCommand command)
         {
             if (command is null) return BadRequest();
 
@@ -70,11 +70,10 @@ namespace ESCMB.API.Controllers
         }
 
         [HttpDelete("api/v1/[Controller]/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
-            if (id <= 0) return BadRequest();
-
-            await _commandQueryBus.Send(new DeleteCustomerCommand { Id = id });
+            Console.WriteLine("Por entrar");
+            await _commandQueryBus.Send(new DeleteCustomerCommand { Id=id});
 
             return NoContent();
         }

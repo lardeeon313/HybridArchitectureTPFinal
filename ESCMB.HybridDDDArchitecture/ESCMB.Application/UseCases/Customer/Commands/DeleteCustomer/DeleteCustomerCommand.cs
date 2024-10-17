@@ -12,12 +12,10 @@ namespace ESCMB.Application.UseCases.Customer.Commands.DeleteCustomer
     public class DeleteCustomerCommand : IRequestCommand<Unit>
     {
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public DeleteCustomerCommand()
-        {
-            
-        }
+   
+        public DeleteCustomerCommand() { }
     }
     
 }

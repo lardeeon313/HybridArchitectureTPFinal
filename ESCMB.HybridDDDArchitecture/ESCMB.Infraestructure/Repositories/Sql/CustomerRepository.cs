@@ -42,19 +42,22 @@ namespace ESCMB.Infraestructure.Repositories.Sql
             return context.Customer.FindAsync(keyValues);
         }
 
-        public void Remove(Customer entity)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Remove(Customer customer)
+       // {
+           // context.Customer.Remove(customer);
+         //   context.SaveChanges();
+       // }
 
-        public void Remove(params object[] keyValues)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Remove(params object[] keyValues)
+        //{
+          //  context.Remove(keyValues);
+           // context.SaveChanges();
+        //}
 
         public void Update(Customer entity)
         {
-            throw new NotImplementedException();
+             context.Customer.Update(entity);
+            Context.SaveChanges();
         }
 
         Task<int> ISqlRepository<Customer>.AddAsync(Customer entity)
