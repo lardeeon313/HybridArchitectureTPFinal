@@ -14,7 +14,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Adapters\" />
 		<Folder Include="Integrations\Events\" />
 		<Folder Include="Integrations\Handlers\" />
 		<Folder Include="UseCases\DummyEntity\Notifications\" />

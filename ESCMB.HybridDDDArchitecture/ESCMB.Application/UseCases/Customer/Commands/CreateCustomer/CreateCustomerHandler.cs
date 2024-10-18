@@ -1,6 +1,7 @@
 ﻿using Core.Application.ComandQueryBus.Buses;
 using Core.Application.ComandQueryBus.Commands;
 using Core.Application.Mapping;
+using ESCMB.Application.Adapters;
 using ESCMB.Application.ApplicationServices;
 using ESCMB.Application.ApplicationServices.Customer;
 using ESCMB.Application.DomainEvents;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
 {
-    public sealed class CreateCustomerHandler(ICommandQueryBus domainBus, ICustomerRepository customerRepository, ICustomerApplicationService customerApplicationService) : IRequestCommandHandler<CreateCustomerCommand, string>
+    public sealed class CreateCustomerHandler(ISmtpEmailSenderAdapter smtpEmailSenderAdapter, ICommandQueryBus domainBus, ICustomerRepository customerRepository, ICustomerApplicationService customerApplicationService) : IRequestCommandHandler<CreateCustomerCommand, string>
     {
         private readonly ICommandQueryBus _domainBus = domainBus ?? throw new ArgumentNullException(nameof(domainBus));
         private readonly ICustomerRepository _context = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
@@ -26,7 +27,7 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
             Console.WriteLine("Creating customer entity...");
             Console.WriteLine("CUIT request" + request.CuilCuit);
             Domain.Entities.Customer entity = new(request.CuilCuit, request.DocumentNumber, request.Email, request.FirstName, request.LastName);
-            
+
             if (!entity.IsValid())
             {
                 Console.WriteLine("Customer entity is not valid");
@@ -42,17 +43,33 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
 
             try
             {
+
                 Console.WriteLine("Adding customer to repository...");
-                Console.WriteLine("CUIT"+entity.CuilCuit);
+                Console.WriteLine("CUIT" + entity.CuilCuit);
                 string createdId = await _context.AddOneAsync(entity);
                 Console.WriteLine($"Customer created with ID: {createdId}");
 
                 Console.WriteLine("Publishing CustomerCreated event...");
-                CustomerCreated customerCreated = new CustomerCreated(entity.CuilCuit,entity.DocumentNumber,
-                    entity.Email,entity.FirstName,entity.LastName);
+                CustomerCreated customerCreated = new CustomerCreated(entity.CuilCuit, entity.DocumentNumber,
+                    entity.Email, entity.FirstName, entity.LastName);
                 await _domainBus.Publish(customerCreated, cancellationToken);
                 Console.WriteLine("Event published.");
 
+                string sender = "lardeeon123@gmail.com";
+                string msgbody = $@"
+                    <p>
+                        Bienvenido a NETBanking {entity.FirstName}, {entity.LastName}, <br/>
+                        
+                        Para completar el registro, debe realizar la confirmacion accediendo al siguiente enlace: <br/>
+                        <a href='linkConfirmation=entityId'> Click aquí</a><br/><br/>
+                        
+                        Saludos, <br/>
+                        NETBanking TEAM
+                    <p>";
+                string subject = "Registro NETBanking";
+                await smtpEmailSenderAdapter.SendEmailAsync(sender, subject, msgbody, entity.Email);
+
+                Console.WriteLine("Se envio el correo");
                 return createdId;
             }
             catch (Exception ex)
@@ -61,5 +78,5 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
                 throw new BussinessException(Constants.PROCESS_EXECUTION_EXCEPTION, ex.InnerException);
             }
         }
-    } 
+    }
 }

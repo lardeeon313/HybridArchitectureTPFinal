@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ESCMB.Application.Adapters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
+using SendGrid.Extensions.DependencyInjection;
 
 namespace ESCMB.Infraestructure.Registrations
 {
@@ -34,6 +36,15 @@ namespace ESCMB.Infraestructure.Registrations
             //Habilitar para trabajar con Migrations
             //var context = services.BuildServiceProvider().GetRequiredService<Repositories.Sql.StoreDbContext>();
             //context.Database.Migrate();
+
+            /* SendGrid Inyeccion */
+
+            services.AddTransient<ISmtpEmailSenderAdapter, SmtpEmailSenderAdapter>();
+            services.AddSendGrid(options =>
+            {
+                options.ApiKey = configuration["SENDGRID_API_KEY"];
+            });
+
 
             /* Sql Repositories */
             services.AddTransient<Application.Repositories.Sql.ICustomerRepository, Repositories.Sql.CustomerRepository>();
