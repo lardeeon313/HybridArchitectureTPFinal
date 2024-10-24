@@ -11,6 +11,8 @@ namespace ESCMB.Application.DomainEvents.Customer
 {
     public class CustomerCreated : DomainEvent
     {
+        [Required]
+        public string id;
         public string CuilCuit { get; private set; }
         [Required]
         public string DocumentNumber { get; private set; }

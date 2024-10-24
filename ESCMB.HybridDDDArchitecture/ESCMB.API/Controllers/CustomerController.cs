@@ -21,6 +21,14 @@ namespace ESCMB.API.Controllers
             return Ok(entities);
         }
 
+        [HttpPost("api/v1/validMail/{id}")]
+        public async Task<IActionResult> confirMail(string id)
+        {
+
+            
+            return null;
+        }
+
         [HttpGet("api/v1/[Controller]/{id}")]
         public async Task<IActionResult> GetById(string id)
         {

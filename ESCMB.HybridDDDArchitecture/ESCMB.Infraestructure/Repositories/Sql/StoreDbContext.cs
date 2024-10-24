@@ -13,6 +13,8 @@ namespace ESCMB.Infraestructure.Repositories.Sql
 
         public DbSet<Domain.Entities.Customer> Customer { get; set; }
 
+        public DbSet<Domain.Entities.Account> Account { get; set; }
+
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
         {
         }
@@ -30,6 +32,7 @@ namespace ESCMB.Infraestructure.Repositories.Sql
         {
             modelBuilder.Entity<Domain.Entities.DummyEntity>().ToTable("DummyEntity");
             modelBuilder.Entity<Domain.Entities.Customer>().ToTable("Customer");
+            modelBuilder.Entity<Domain.Entities.Account>().ToTable("Account");
         }
 
     }

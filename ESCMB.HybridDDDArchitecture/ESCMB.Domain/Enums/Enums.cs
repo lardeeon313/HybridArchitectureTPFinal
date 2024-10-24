@@ -22,5 +22,12 @@
             Confirmed,
             Active,
         }
+
+        public enum AccountStatus
+        {
+            Active,
+            Blocked,
+            Cancel,
+        }
     }
 }

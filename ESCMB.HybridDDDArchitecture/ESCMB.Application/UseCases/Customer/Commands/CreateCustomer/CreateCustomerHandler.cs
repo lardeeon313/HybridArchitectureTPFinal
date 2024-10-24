@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
 {
-    public sealed class CreateCustomerHandler(ISmtpEmailSenderAdapter smtpEmailSenderAdapter, ICommandQueryBus domainBus, ICustomerRepository customerRepository, ICustomerApplicationService customerApplicationService) : IRequestCommandHandler<CreateCustomerCommand, string>
+    public sealed class CreateCustomerHandler( ICommandQueryBus domainBus, ICustomerRepository customerRepository, ICustomerApplicationService customerApplicationService) : IRequestCommandHandler<CreateCustomerCommand, string>
     {
         private readonly ICommandQueryBus _domainBus = domainBus ?? throw new ArgumentNullException(nameof(domainBus));
         private readonly ICustomerRepository _context = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
@@ -54,22 +54,7 @@ namespace ESCMB.Application.UseCases.Customer.Commands.CreateCustomer
                     entity.Email, entity.FirstName, entity.LastName);
                 await _domainBus.Publish(customerCreated, cancellationToken);
                 Console.WriteLine("Event published.");
-
-                string sender = "lardeeon123@gmail.com";
-                string msgbody = $@"
-                    <p>
-                        Bienvenido a NETBanking {entity.FirstName}, {entity.LastName}, <br/>
-                        
-                        Para completar el registro, debe realizar la confirmacion accediendo al siguiente enlace: <br/>
-                        <a href='linkConfirmation=entityId'> Click aquí</a><br/><br/>
-                        
-                        Saludos, <br/>
-                        NETBanking TEAM
-                    <p>";
-                string subject = "Registro NETBanking";
-                await smtpEmailSenderAdapter.SendEmailAsync(sender, subject, msgbody, entity.Email);
-
-                Console.WriteLine("Se envio el correo");
+               
                 return createdId;
             }
             catch (Exception ex)
